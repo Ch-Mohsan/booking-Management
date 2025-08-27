@@ -5,10 +5,9 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const app = express();
 const allowedOrigins = [
   "https://booking-management-2ckt.vercel.app",
-  "http://localhost:3000" // for local dev
+  "http://localhost:3000"
 ];
 
 app.use(cors({
