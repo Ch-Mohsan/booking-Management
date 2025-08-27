@@ -12,6 +12,7 @@ import ShowBooking from './pages/Showbooking'
 import AllBookings from './pages/AllBookings'
 import ManageStations from './pages/ManageStations'
 import StationsBookings from './pages/StationsBookings'
+import ShowBooking from './pages/Showbooking'
 
 function App() {
   const location = useLocation();
