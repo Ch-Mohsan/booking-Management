@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 const allowedOrigins = [
-  "https://booking-management-b36d.vercel.app",
+  "https://booking-management-2ckt.vercel.app",
   "http://localhost:3000" // for local dev
 ];
 
