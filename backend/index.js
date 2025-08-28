@@ -2,12 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const app = express();
 
 dotenv.config();
 
 const allowedOrigins = [
-  "https://booking-management-2ckt.vercel.app",
-  "http://localhost:3000"
+  process.env.origin
 ];
 
 app.use(cors({
@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 });
 
 // ✅ MongoDB connection
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/bus_booking', {
+mongoose.connect(process.env.MONGO_URI , {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
