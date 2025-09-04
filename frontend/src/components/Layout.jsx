@@ -42,8 +42,8 @@ const Layout = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Custom CSS for professional animations */}
-      <style jsx>{`
+  {/* Custom CSS for professional animations */}
+  <style>{`
         @keyframes slideInLeft {
           from {
             transform: translateX(-100%);

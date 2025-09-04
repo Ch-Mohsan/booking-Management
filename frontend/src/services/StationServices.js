@@ -1,7 +1,8 @@
 // services/stationApi.js
 import axios from 'axios';
 
-const API_URL = `${import.meta.env.VITE_API_BASE_URL}/stations`;
+// const API_URL = `${import.meta.env.VITE_API_BASE_URL}/stations`;
+const API_URL = 'http://localhost:5000/api/stations';
 
 // Create axios instance with default config
 const api = axios.create({
@@ -19,7 +20,7 @@ const getAuthHeader = (token) => ({
 // Get all stations
 export const fetchStations = async () => {
   try {
-    const res = await api.get('/');
+    const res = await api.get('/'); // Now this will call /api/stations/
     return res.data;
   } catch (error) {
     throw new Error(error.response?.data?.message || 'Failed to fetch stations');

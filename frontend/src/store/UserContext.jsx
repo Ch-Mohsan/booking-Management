@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
 // More flexible API URL configuration
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/users';
+// const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/users';
+const API_URL = 'http://localhost:5000/api';
 const TOKEN_KEY = 'busBookingToken';
 const USER_KEY = 'busBookingUser';
 
@@ -63,7 +64,7 @@ export const UserProvider = ({ children }) => {
     setError(null)
     setLoading(true)
     try {
-      const data = await makeApiCall('/register', {
+  const data = await makeApiCall('/users/register', {
         method: 'POST',
         body: JSON.stringify(userData)
       });
@@ -92,7 +93,7 @@ export const UserProvider = ({ children }) => {
     setError(null)
     setLoading(true)
     try {
-      const data = await makeApiCall('/login', {
+  const data = await makeApiCall('/users/login', {
         method: 'POST',
         body: JSON.stringify(userData)
       });
@@ -129,7 +130,7 @@ export const UserProvider = ({ children }) => {
     setLoading(true)
     setError(null)
     try {
-      const data = await makeApiCall('/profile', {
+  const data = await makeApiCall('/users/profile', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -162,7 +163,7 @@ export const UserProvider = ({ children }) => {
       const token = localStorage.getItem(TOKEN_KEY);
       if (!token) throw new Error('Not authenticated');
 
-      const data = await makeApiCall('/users', {
+  const data = await makeApiCall('/users/users', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 

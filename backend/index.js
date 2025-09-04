@@ -1,24 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+let 
+cors = require('cors');
 const dotenv = require('dotenv');
 const app = express();
 
 dotenv.config();
 
-const allowedOrigins = [
-  process.env.origin
-];
-
+ cors = require('cors');
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
+  origin: 'http://localhost:5173',
+  credentials: true // if you use cookies/auth
 }));
 
 app.use(express.json());
@@ -44,12 +36,12 @@ mongoose.connect(process.env.MONGO_URI , {
 })
 .then(() => console.log("✅ MongoDB connected"))
 .catch((err) => console.error('MongoDB connection error:', err));
+// ✅ Start server
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`✅ Server is running on port ${process.env.PORT || 5000}`);
+});
 
 // ✅ Export app (for Vercel)
 module.exports = app;
 
-// ✅ Only run app.listen() in local development
-// if (process.env.NODE_ENV !== "production") {
-//   const PORT = process.env.PORT || 5000;
-//   app.listen(PORT, () => console.log(`🚀 Server running locally on port ${PORT}`));
-// }
+
